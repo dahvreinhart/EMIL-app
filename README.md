@@ -1,7 +1,7 @@
 # EMIL App
 A simple app leveraging a message bus architecture to save and display packets of randomly generated data.
 
-## Firt-Time Operation Instructions
+## First-Time Operation Instructions
 1. Clone or download this repository to your favourite directory
 2. In your terminal, navigate to the `EMIL-app/application-app` directory
 3. Run `npm install`
@@ -11,7 +11,7 @@ A simple app leveraging a message bus architecture to save and display packets o
 7. Observe homepage
 
 ## Additional Operation Instructions
-The front end of the application is simply a printout of the data container in local storage. When you click the `Generate New Metric Item` button, a request is sent to the API and a new metric item is constructed using random data. This item is then put onto a RabbitMQ message bus. After consumtion of this message, the data is saved into local storage. Pressing the button will also refresh the page. Since the message bus is quite fast, the request time is usually sufficient to allow for the message to be consumed and saved. Therefore, you will most often see your newely created item at the top of the list when the page refreshes. However, this is not a guarentee. If you don't see your new item appear after the page refresh, simply refresh again and it should be there.
+The front end of the application is simply a printout of the data contained in local storage. When you click the `Generate New Metric Item` button, a request is sent to the API and a new metric item is constructed using random data. This item is then put onto a RabbitMQ message bus. After consumtion of this message, the data is saved into local storage. Pressing the button will also refresh the page. Since the message bus is quite fast, the request time is usually sufficient to allow for the message to be consumed and saved. Therefore, you will most often see your newely created item at the top of the list when the page refreshes. However, this is not a guarentee as the message bus and subsequent DB save action do not always complete in time. If you don't see your new item appear after the page refresh, simply refresh again and it should be there.
 
 ## Testing
 1. In your terminal, navigate to the `EMIL-app/application-app` directory
