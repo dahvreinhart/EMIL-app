@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    h1 #{title}
+    p Number of Metric Items Found: #{metricItems.length}
+    div
+        form(METHOD='POST' action='/generate')
+            button(type='submit') Generate New Metric Item
+    <hr>
+    div
+        table
+            thead
+            tr
+                th.table-item Temperatur (°C)
+                th.table-item Speed (Km/h)
+                th.table-item Fuel Level (%)
+                th.table-item Tire Pressure (Kpa)
+                th.table-item Latitude
+                th.table-item Longitude
+            tbody
+            each mi, i in metricItems
+                tr
+                    td.table-item #{mi.tempC}
+                    td.table-item #{mi.speedKph}
+                    td.table-item #{mi.fuelLevelPct}
+                    td.table-item #{mi.tirePressureKpa}
+                    td.table-item #{mi.lat}
+                    td.table-item #{mi.lng}
+    <hr>
