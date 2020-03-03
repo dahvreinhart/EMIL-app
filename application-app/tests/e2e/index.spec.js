@@ -25,11 +25,14 @@ describe('Index Routes End-To-End Tests', () => {
                 .post('/generate')
                 .expect(302)
                 .then(async res => {
-                    const numItemsNew = await MetricItem.find().count().exec();
+                    // Give msg bus time to empty
+                    setTimeout(async () => {
+                        const numItemsNew = await MetricItem.find().count().exec();
 
-                    expect(res.text).toBeDefined();
-                    expect(res.redirect).toEqual(true);
-                    expect(numItemsNew).toEqual(numItemsOld + 1);
+                        expect(res.text).toBeDefined();
+                        expect(res.redirect).toEqual(true);
+                        expect(numItemsNew).toEqual(numItemsOld + 1);
+                    }, 1000);
                 });
         });
 
